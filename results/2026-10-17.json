@@ -1,0 +1,103 @@
+{
+  "note": "Values returned by the Cloudflare API (UTC). Fields not related to the timestamps are omitted.",
+  "wranglerVersion": "4.151.1",
+  "deploy": {
+    "wranglerDeployStart": "2026-10-17T19:36:54.035Z",
+    "wranglerDeployEnd": "2026-10-17T19:36:59.911Z"
+  },
+  "workflow": {
+    "request": "GET /accounts/{account_id}/workflows/workflows-cron-timestamp-repro",
+    "created_on": "2026-10-17T19:36:58.922Z",
+    "schedulesObservedAfterDeploy": [
+      { "cron": "*/5 * * * *", "next_instance": "*/5 * * * *-1792266000000" }
+    ],
+    "schedulesObservedAfterFirstFiring": [
+      { "cron": "*/5 * * * *", "next_instance": "*/5 * * * *-1792266300000" }
+    ]
+  },
+  "list": {
+    "request": "GET /accounts/{account_id}/workflows/workflows-cron-timestamp-repro/instances (after the second firing)",
+    "result": [
+      {
+        "id": "*/5 * * * *-1792266300000",
+        "status": "complete",
+        "created_on": "2026-10-17T19:45:00.000Z",
+        "modified_on": "2026-10-17T19:45:51.945Z",
+        "started_on": "2026-10-17T19:45:51.000Z",
+        "ended_on": "2026-10-17T19:45:51.000Z",
+        "trigger_source": "cron"
+      },
+      {
+        "id": "*/5 * * * *-1792266000000",
+        "status": "complete",
+        "created_on": "2026-10-17T19:40:00.000Z",
+        "modified_on": "2026-10-17T19:40:51.739Z",
+        "started_on": "2026-10-17T19:40:51.000Z",
+        "ended_on": "2026-10-17T19:40:51.000Z",
+        "trigger_source": "cron"
+      }
+    ]
+  },
+  "instances": {
+    "request": "GET /accounts/{account_id}/workflows/workflows-cron-timestamp-repro/instances/{instance_id}",
+    "*/5 * * * *-1792266000000": {
+      "trigger": { "source": "cron" },
+      "schedule": { "cron": "*/5 * * * *", "scheduledTime": 1792266050687 },
+      "queued": "2026-10-17T19:37:31.319Z",
+      "start": "2026-10-17T19:40:51.287Z",
+      "end": "2026-10-17T19:40:51.600Z",
+      "status": "complete",
+      "output": {
+        "instanceId": "*/5 * * * *-1792266000000",
+        "cron": "*/5 * * * *",
+        "eventTimestamp": "2026-10-17T19:37:31.319Z",
+        "scheduledTime": "2026-10-17T19:40:50.687Z",
+        "startedAt": "2026-10-17T19:40:51.591Z",
+        "scheduledTimeMinusEventTimestampMs": 199368
+      },
+      "steps": [
+        {
+          "name": "started-at-1",
+          "start": "2026-10-17T19:40:51.582Z",
+          "end": "2026-10-17T19:40:51.591Z",
+          "output": "1792266051591",
+          "success": true
+        }
+      ]
+    },
+    "*/5 * * * *-1792266300000": {
+      "trigger": { "source": "cron" },
+      "schedule": { "cron": "*/5 * * * *", "scheduledTime": 1792266350687 },
+      "queued": "2026-10-17T19:40:51.257Z",
+      "start": "2026-10-17T19:45:51.471Z",
+      "end": "2026-10-17T19:45:51.804Z",
+      "status": "complete",
+      "output": {
+        "instanceId": "*/5 * * * *-1792266300000",
+        "cron": "*/5 * * * *",
+        "eventTimestamp": "2026-10-17T19:40:51.257Z",
+        "scheduledTime": "2026-10-17T19:45:50.687Z",
+        "startedAt": "2026-10-17T19:45:51.795Z",
+        "scheduledTimeMinusEventTimestampMs": 299430
+      },
+      "steps": [
+        {
+          "name": "started-at-1",
+          "start": "2026-10-17T19:45:51.787Z",
+          "end": "2026-10-17T19:45:51.795Z",
+          "output": "1792266351795",
+          "success": true
+        }
+      ]
+    },
+    "*/5 * * * *-1792266600000": {
+      "trigger": { "source": "cron" },
+      "schedule": { "cron": "*/5 * * * *", "scheduledTime": 1792266650687 },
+      "queued": "2026-10-17T19:45:51.364Z",
+      "start": null,
+      "end": "2026-10-17T19:47:25.950Z",
+      "status": "terminated",
+      "steps": [{ "type": "termination", "trigger": { "source": "api" } }]
+    }
+  }
+}
