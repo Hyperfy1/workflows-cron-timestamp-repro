@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "workflows-cron-timestamp-repro",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workflows": [
+    {
+      "name": "workflows-cron-timestamp-repro",
+      "binding": "REPRO_WORKFLOW",
+      "class_name": "ReproWorkflow",
+      "schedules": ["*/5 * * * *"]
+    }
+  ]
+}

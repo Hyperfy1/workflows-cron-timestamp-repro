@@ -1,0 +1,14 @@
+{
+  "name": "workflows-cron-timestamp-repro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "list": "wrangler workflows instances list workflows-cron-timestamp-repro",
+    "describe": "wrangler workflows instances describe workflows-cron-timestamp-repro",
+    "cleanup": "wrangler delete"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.1"
+  }
+}
